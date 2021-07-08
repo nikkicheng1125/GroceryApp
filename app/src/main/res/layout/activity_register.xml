@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/light_gray">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+
+        android:scaleType="center"
+        android:src="@drawable/logo2" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Name"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/edit_text_name"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/login_border"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Email or Username"
+        android:layout_marginTop="15dp"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/edit_text_email"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/login_border"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Password"
+        android:layout_marginTop="15dp"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:inputType="textPassword"
+        android:id="@+id/edit_text_password"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/login_border"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Phone"
+        android:layout_marginTop="15dp"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/edit_text_mobile"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@drawable/login_border"
+        android:layout_gravity="center"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/teal_700"
+        android:layout_marginTop="20dp"
+        android:text="Register"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/already_register_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="10dp"
+            android:text="Already Registered?  "/>
+
+        <TextView
+            android:clickable="true"
+            android:onClick="onClick"
+            android:layout_toRightOf="@+id/already_register_text"
+            android:id="@+id/already_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/teal_700"
+            android:text="Sign in here"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

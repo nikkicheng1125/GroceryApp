@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edit_text_border"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/image_view_history"
+        android:layout_width="100dp"
+        android:scaleType="centerCrop"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/text_view_date"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/image_view_history"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@id/image_view_history"
+        android:text="Date"
+        android:textSize="14sp"
+        android:textColor="@color/black" />
+
+
+    <TextView
+        android:id="@+id/text_view_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/image_view_history"
+        android:layout_alignParentRight="true"
+        android:text="Status"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+
+    <TextView
+        android:id="@+id/text_view_total_mrp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/text_view_total_pay"
+        android:layout_alignStart="@id/text_view_date"
+        android:layout_toEndOf="@id/image_view_history"
+        android:text="Total:"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/text_view_total_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/text_view_date"
+        android:layout_alignBottom="@id/image_view_history"
+        android:layout_toEndOf="@id/image_view_history"
+        android:text="Payment:"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/button_view_details"
+        android:layout_width="112dp"
+        android:layout_height="36dp"
+        android:layout_alignBottom="@id/image_view_history"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="-6dp"
+        android:text="View details"
+        android:textSize="12sp"
+        android:textAllCaps="false"/>
+
+</RelativeLayout>

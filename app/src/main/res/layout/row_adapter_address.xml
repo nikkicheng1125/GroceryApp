@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edit_text_border"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/text_view_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/text_view_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/text_view_name"
+        android:layout_alignBottom="@id/text_view_name"
+        android:layout_marginStart="10dp"
+        android:text="Email"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_view_address_housetype"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Housetype"
+        android:layout_below="@id/text_view_name" />
+
+    <TextView
+        android:id="@+id/text_view_address_line1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_address_housetype"
+        android:text="Address line 1" />
+
+    <TextView
+        android:id="@+id/text_view_address_line2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_address_housetype"
+        android:layout_toEndOf="@id/text_view_address_line1"
+        android:layout_marginStart="5dp"
+        android:text="Address line 2" />
+
+    <TextView
+        android:id="@+id/text_view_address_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_address_line2"
+        android:text="City" />
+
+    <TextView
+        android:id="@+id/text_view_address_zipcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_address_city"
+        android:text="Zipcode" />
+
+    <TextView
+        android:id="@+id/text_view_delete_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:clickable="true"
+        app:drawableStartCompat="@drawable/ic_baseline_close_24" />
+
+    <TextView
+        android:id="@+id/text_view_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/text_view_address_zipcode"
+        android:layout_alignParentRight="true"
+        android:clickable="true"
+        android:text="Edit"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+
+</RelativeLayout>
