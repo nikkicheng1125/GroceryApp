@@ -135,16 +135,9 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnCartAdapterListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var sessionManager = SessionManager(this)
         when(item.itemId){
             android.R.id.home-> finish()
             R.id.menu_home -> startActivity(Intent(this,CategoryActivity::class.java))
-            R.id.menu_address_nocart -> startActivity(Intent(this,AddressActivity::class.java))
-            R.id.menu_logout -> {
-                sessionManager.logout()
-                startActivity(Intent(this,LoginActivity::class.java))
-            }
-            R.id.menu_setting_nocart -> Toast.makeText(applicationContext,"Settings", Toast.LENGTH_SHORT).show()
         }
         return true
     }

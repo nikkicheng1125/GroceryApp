@@ -19,6 +19,13 @@ import com.yiwencheng.groceryapp.adapters.HistoryAdapter
 import com.yiwencheng.groceryapp.app.Endpoints
 import com.yiwencheng.groceryapp.helpers.SessionManager
 import com.yiwencheng.groceryapp.models.*
+import com.yiwencheng.groceryapp.models.History.Companion.KEY_HISTORY
+import com.yiwencheng.groceryapp.models.OrderSummary.Companion.KEY_ORDER_SUMMARY
+import com.yiwencheng.groceryapp.models.OrderedProduct.Companion.KEY_ORDERED_PRODUCT
+import com.yiwencheng.groceryapp.models.Payment.Companion.KEY_PAYMENT
+import com.yiwencheng.groceryapp.models.ShippingAddress.Companion.KEY_SHIPPING_ADDRESS
+import com.yiwencheng.groceryapp.models.User.Companion.KEY_USER
+
 import kotlinx.android.synthetic.main.activity_orderhistory.*
 import kotlinx.android.synthetic.main.app_bar.*
 
@@ -48,7 +55,6 @@ class OrderhistoryActivity : AppCompatActivity(),HistoryAdapter.OnHistoryAdapter
 
         recycler_view_order_history.adapter = historyAdapter
         recycler_view_order_history.layoutManager = LinearLayoutManager(this)
-
 
     }
 
@@ -89,7 +95,9 @@ class OrderhistoryActivity : AppCompatActivity(),HistoryAdapter.OnHistoryAdapter
     }
 
     override fun onItemClick(history: History) {
-        TODO("Not yet implemented")
+        var intent = Intent(this,OrderDetailActivity::class.java)
+        intent.putExtra(KEY_HISTORY,history)
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -98,17 +106,10 @@ class OrderhistoryActivity : AppCompatActivity(),HistoryAdapter.OnHistoryAdapter
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var sessionManager = SessionManager(this)
         when(item.itemId){
             android.R.id.home-> finish()
             R.id.menu_home -> startActivity(Intent(this,CategoryActivity::class.java))
             R.id.menu_cart -> startActivity(Intent(this,CartActivity::class.java))
-            R.id.menu_logout -> {
-                sessionManager.logout()
-                startActivity(Intent(this,LoginActivity::class.java))
-            }
-            R.id.menu_address -> startActivity(Intent(this,AddressActivity::class.java))
-            R.id.menu_setting -> Toast.makeText(applicationContext,"Settings", Toast.LENGTH_SHORT).show()
         }
         return true
     }

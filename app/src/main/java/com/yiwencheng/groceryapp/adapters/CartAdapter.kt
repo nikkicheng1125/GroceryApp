@@ -11,6 +11,7 @@ import com.squareup.picasso.Picasso
 import com.yiwencheng.groceryapp.R
 import com.yiwencheng.groceryapp.helpers.DBHelper
 import com.yiwencheng.groceryapp.models.CartProduct
+import com.yiwencheng.groceryapp.models.ProductData
 import kotlinx.android.synthetic.main.activity_cart.*
 import kotlinx.android.synthetic.main.row_adapter_cart.view.*
 
@@ -30,6 +31,11 @@ class CartAdapter(var myContext: Context, var cartList:ArrayList<CartProduct>):R
 
     override fun getItemCount(): Int {
         return cartList.size
+    }
+
+    fun setData(list: ArrayList<CartProduct>) {
+        cartList = list
+        notifyDataSetChanged()
     }
 
     inner class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){

@@ -14,28 +14,4 @@
         app:showAsAction="always"
         android:title="Cart"/>
 
-    <item
-        android:id="@+id/menu_history"
-        android:icon="@drawable/ic_baseline_receipt_24"
-        app:showAsAction="never"
-        android:title="Order History"/>
-
-    <item
-        android:id="@+id/menu_address"
-        android:title="Address"
-        android:icon="@drawable/ic_baseline_person_24"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/menu_setting"
-        android:icon="@drawable/ic_baseline_settings_24"
-        android:title="Settings"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/menu_logout"
-        android:title="Logout"
-        android:icon="@drawable/ic_baseline_exit_to_app_24"
-        app:showAsAction="never"/>
-
 </menu>

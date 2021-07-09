@@ -137,25 +137,13 @@ class AddAddressActivity : AppCompatActivity() {
                 startActivity(intent)
 
             }
-
         }
     }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu,menu)
-        return true
-    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var sessionManager =  SessionManager(this)
         when(item.itemId){
             android.R.id.home-> finish()
-            R.id.menu_cart -> startActivity(Intent(this,CartActivity::class.java))
-            R.id.menu_logout -> {
-                sessionManager.logout()
-                startActivity(Intent(this,LoginActivity::class.java))
-            }
-            R.id.menu_address -> Toast.makeText(applicationContext,"Profile", Toast.LENGTH_SHORT).show()
-            R.id.menu_setting -> Toast.makeText(applicationContext,"Settings",Toast.LENGTH_SHORT).show()
         }
         return true
     }

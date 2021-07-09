@@ -7,11 +7,15 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.google.android.material.navigation.NavigationView
 import com.yiwencheng.groceryapp.R
 import com.yiwencheng.groceryapp.adapters.Adapter
 import com.yiwencheng.groceryapp.adapters.ViewPagerAdapter
@@ -21,13 +25,17 @@ import com.yiwencheng.groceryapp.models.Data
 import com.yiwencheng.groceryapp.models.Data.Companion.KEY_DATA
 import kotlinx.android.synthetic.main.activity_category.*
 import kotlinx.android.synthetic.main.app_bar.*
+import kotlinx.android.synthetic.main.content_category.*
+import kotlinx.android.synthetic.main.nav_header.view.*
 
 
-class CategoryActivity : AppCompatActivity(),Adapter.OnAdapterListener  {
+class CategoryActivity : AppCompatActivity(),Adapter.OnAdapterListener,NavigationView.OnNavigationItemSelectedListener  {
 
     var myList:ArrayList<Data> = ArrayList()
     var adapterImage:Adapter?=null
     var adapterSlide:ViewPagerAdapter?=null
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +46,6 @@ class CategoryActivity : AppCompatActivity(),Adapter.OnAdapterListener  {
         mtoolbar.title = "Home"
 
         setSupportActionBar(mtoolbar)
-       // supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         init()
 
@@ -46,9 +53,23 @@ class CategoryActivity : AppCompatActivity(),Adapter.OnAdapterListener  {
 
     private fun init(){
         getData()
+
+        var sessionManager = SessionManager(this)
+        drawerLayout = drawer_layout
+        navView = nav_view
+        var headerView = navView.getHeaderView(0)
+        headerView.text_view_header_name.text = sessionManager.getName()
+        headerView.text_view_nav_header_email.text = sessionManager.getEmail()
+        var toggle = ActionBarDrawerToggle(
+            this,drawerLayout,my_toolbar,0,0
+        )
+
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        navView.setNavigationItemSelectedListener(this)
+
         adapterSlide = ViewPagerAdapter(this,myList)
         view_pager.adapter = adapterSlide
-
         adapterImage = Adapter(this,myList)
         adapterImage!!.setOnAdapterListener(this)
         recycler_view.adapter = adapterImage
@@ -91,20 +112,8 @@ class CategoryActivity : AppCompatActivity(),Adapter.OnAdapterListener  {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var sessionManager = SessionManager(this)
         when(item.itemId){
             R.id.menu_cart -> startActivity(Intent(this,CartActivity::class.java))
-            R.id.menu_address -> startActivity(Intent(this,AddressActivity::class.java))
-            R.id.menu_logout -> {
-                sessionManager.logout()
-                startActivity(Intent(this,LoginActivity::class.java))
-            }
-            R.id.menu_profile->{
-                var intent = Intent(this,RegisterActivity::class.java)
-                intent.putExtra("MODE",1)
-                startActivity(intent)
-            }
-            R.id.menu_setting -> Toast.makeText(applicationContext,"Settings",Toast.LENGTH_SHORT).show()
         }
         return true
     }
@@ -114,5 +123,26 @@ class CategoryActivity : AppCompatActivity(),Adapter.OnAdapterListener  {
         var intent = Intent(this,SubCategoryActivity::class.java)
         intent.putExtra(KEY_DATA,data)
         startActivity(intent)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        var sessionManager = SessionManager(this)
+        when(item.itemId){
+            R.id.item_account->{
+                var intent = Intent(this,RegisterActivity::class.java)
+                intent.putExtra("MODE",1)
+                startActivity(intent)
+            }
+            R.id.item_orders -> startActivity(Intent(this,OrderhistoryActivity::class.java))
+            R.id.item_logout -> {
+                sessionManager.logout()
+                startActivity(Intent(this,LoginActivity::class.java))
+            }
+            R.id.item_rate -> Toast.makeText(applicationContext,"To be added in future",Toast.LENGTH_SHORT).show()
+            R.id.item_setting -> Toast.makeText(applicationContext,"To be added in future",Toast.LENGTH_SHORT).show()
+            R.id.item_address ->  startActivity(Intent(this,AddressActivity::class.java))
+        }
+        drawerLayout.closeDrawer(GravityCompat.START)
+        return true
     }
 }

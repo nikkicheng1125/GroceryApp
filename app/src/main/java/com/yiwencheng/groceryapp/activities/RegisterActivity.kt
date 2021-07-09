@@ -26,6 +26,11 @@ class RegisterActivity : AppCompatActivity(),  View.OnClickListener {
 
     private fun init(){
         var mode = intent.getIntExtra("MODE",0)
+        if (mode==0){
+            button_register.text = "Register"
+        }else{
+            button_register.text = "Save"
+        }
 
         button_register.setOnClickListener {
             if(mode == 0){
@@ -55,6 +60,7 @@ class RegisterActivity : AppCompatActivity(),  View.OnClickListener {
                 requestQueue.add(request)
                 startActivity(Intent(this, LoginActivity::class.java))
             }else{
+
                 var firstName = edit_text_name.text.toString()
                 var email = edit_text_email.text.toString()
                 var password = edit_text_password.text.toString()
@@ -75,7 +81,7 @@ class RegisterActivity : AppCompatActivity(),  View.OnClickListener {
                     Response.Listener {
                         Log.d("modifieduser",it.toString())
                         sessionManager.logout()
-                        Toast.makeText(applicationContext,_id,Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext,"Function to be improved by API side",Toast.LENGTH_SHORT).show()
                     },
                     Response.ErrorListener {
                         Log.e("abc",it.message.toString())

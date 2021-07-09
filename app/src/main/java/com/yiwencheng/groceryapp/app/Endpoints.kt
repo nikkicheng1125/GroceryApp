@@ -55,6 +55,10 @@ class Endpoints {
         fun getOrderUrlById(_id: String): String {
             return Config.BASE_URL + URL_ORDER + "/" + _id
         }
+
+        fun getProductUrlById(_id: String): String {
+            return Config.BASE_URL + URL_PRODUCT + "/" + _id
+        }
     }
 }
 

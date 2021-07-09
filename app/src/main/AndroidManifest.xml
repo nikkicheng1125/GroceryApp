@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GroceryApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.OrderhistoryActivity"></activity>
+        <activity android:name=".activities.OrderDetailActivity"></activity>
+        <activity android:name=".activities.OrderhistoryActivity" />
         <activity android:name=".activities.OrderConfirmActivity" />
         <activity android:name=".activities.PaymentActivity" />
         <activity android:name=".activities.AddAddressActivity" />
